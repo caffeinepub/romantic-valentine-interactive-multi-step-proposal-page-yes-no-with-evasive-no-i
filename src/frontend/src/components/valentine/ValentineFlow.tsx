@@ -5,6 +5,7 @@ import { ShayariStep } from './steps/ShayariStep';
 import { MusicStep } from './steps/MusicStep';
 import { QuotesStep } from './steps/QuotesStep';
 import { DateIdeasStep } from './steps/DateIdeasStep';
+import { ShareSection } from './ShareSection';
 
 type Step = 'proposal' | 'goodChoice' | 'shayari' | 'music' | 'quotes' | 'dateIdeas';
 
@@ -37,7 +38,7 @@ export function ValentineFlow() {
     <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-rose-50 via-pink-50 to-white dark:from-rose-950 dark:via-pink-950 dark:to-gray-900">
       <div className="fixed inset-0 opacity-5 pointer-events-none bg-hearts-pattern" />
       
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-4 gap-6">
         <div className="w-full max-w-2xl">
           {currentStep === 'proposal' && <ProposalStep onAccept={handleAccept} />}
           {currentStep === 'goodChoice' && <GoodChoiceStep onNext={handleNext} />}
@@ -46,6 +47,12 @@ export function ValentineFlow() {
           {currentStep === 'quotes' && <QuotesStep onNext={handleNext} onBack={handleBack} />}
           {currentStep === 'dateIdeas' && <DateIdeasStep onBack={handleBack} />}
         </div>
+        
+        {currentStep === 'proposal' && (
+          <div className="w-full max-w-2xl">
+            <ShareSection />
+          </div>
+        )}
       </div>
     </div>
   );

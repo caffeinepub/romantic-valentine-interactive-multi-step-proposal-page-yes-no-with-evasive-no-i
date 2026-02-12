@@ -1,14 +1,15 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
+  "projectStateVersion": 5,
   "summary": "Build a romantic, interactive Valentine proposal web page (HTML/CSS/JS) with a pink/white theme, a playful Yes/No prompt where No evades the cursor, and a multi-page/step flow showing an image, Hindi shayari, a playable song list, heartfelt quotes, and virtual date ideas—designed to run easily on Android Chrome.",
   "architectural_notes": [
     "Implement as a mobile-friendly HTML/CSS/JS experience optimized for running locally in Android Chrome.",
     "Use a multi-step/page flow (single-page app with section transitions or separate pages) to progress through: proposal -> image -> shayari -> songs -> quotes -> date ideas."
   ],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Romantic couple illustration in a warm, meaningful style (couple-hero.dim_1400x900.png)\n- Seamless subtle heart pattern background in pink/white tones (hearts-pattern.dim_1024x1024.png)",
+  "known_issues": [
+    "Production/shared link is not opening/working in any browser; user requests issue be fixed and a new working link be generated."
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-create-a-single-page-mobile-friendly-interactive-valentine-flow-with-multiple-full-screen-steps-sections-and-smooth-transitions-designed-to-run-well-on-android-chrome",
@@ -89,6 +90,30 @@
         "REQ-10"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-investigate-and-fix-why-the-current-production-url-does-not-load-in-any-browser-ensuring-the-deployed-frontend-is-a-proper-production-build-not-a-development-entry-that-depends-on-src-at-runtime-and-that-the-app-renders-successfully-at-the-root-icp0-io-domain",
+      "title": "Investigate and fix why the current production URL does not load in any browser, ensuring the deployed frontend is a proper production build (not a development entry that depends on /src/* at runtime) and that the app renders successfully at the root icp0.io domain.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-runtime-dependency-on-external-google-fonts-by-bundling-required-fonts-locally-or-switching-to-a-fully-local-system-font-stack-so-the-page-can-render-correctly-even-when-external-font-cdns-are-blocked",
+      "title": "Remove the runtime dependency on external Google Fonts by bundling required fonts locally (or switching to a fully local/system font stack) so the page can render correctly even when external font CDNs are blocked.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-in-app-share-section-or-button-that-displays-the-current-app-url-and-provides-a-one-tap-copy-link-action-so-the-user-can-reliably-share-the-correct-link-from-any-device",
+      "title": "Add an in-app “Share” section (or button) that displays the current app URL and provides a one-tap “Copy link” action, so the user can reliably share the correct link from any device.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -132,6 +157,14 @@
       "id": "AR-7",
       "summary": "Romantic pink and white theme with fully interactive UI built using HTML, CSS, and JavaScript and compatible with Android Chrome",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Republish the application to production after the fix and provide a new, working icp0.io share link.",
+      "reqIds": [
+        "REQ-13"
+      ],
       "status": "pending"
     }
   ],

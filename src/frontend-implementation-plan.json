@@ -1,302 +1,147 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Romantic Valentine multi-step proposal single-page flow (mobile-first, offline assets)",
+  "title": "Fix production load, remove external fonts, add in-app share UI, and prepare for redeploy",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Single-page, mobile-friendly, full-screen multi-step flow with smooth transitions optimized for Android Chrome.",
+      "id": "REQ-11",
+      "summary": "Ensure production deployment serves a real built bundle (not /src/* at runtime) and that all JS/CSS/assets load successfully from the icp0.io root domain.",
       "acceptanceCriteria": [
-        "App loads as a single-page experience (no backend dependency required for core UX).",
-        "Layout is responsive for common Android viewport sizes and supports touch interactions.",
-        "User can progress forward through the steps via clear on-screen controls (e.g., Next buttons) once the proposal is accepted."
+        "Opening the production URL in Chrome, Firefox, and mobile Chrome loads the Valentine flow and shows the first (proposal) step without a blank screen or console errors caused by missing /src/* resources.",
+        "All required JS/CSS/assets are served successfully (no 404s for entry scripts/styles) when loading the production URL.",
+        "Static assets referenced by the app (e.g., /assets/generated/*) load successfully in production (no broken images/backgrounds)."
       ],
       "file_operations": [
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "create",
-          "description": "Create the single-page Valentine flow shell (full-screen step container, step state machine, smooth transitions) and render the multi-step experience. Use shadcn-ui components (e.g., Button/Card) for consistent controls and containers; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/valentine/ValentineFlow.tsx",
-          "operation": "create",
-          "description": "Implement the core multi-step flow component (full-viewport sections, transition animation, touch-friendly controls) used by App. Use shadcn-ui components (e.g., Button/Card) to keep UI consistent; verify the component's usage instructions before implementing."
-        },
         {
           "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Ensure mobile-friendly meta/title baseline remains correct and add any minimal attributes needed for a single-page, Android Chrome friendly experience (no navigation/routing required)."
-        }
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "summary": "Opening proposal step with “Yes” and an evasive “No” button that cannot be clicked/tapped.",
-      "acceptanceCriteria": [
-        "The first step displays the Valentine question with two visible buttons labeled “Yes” and “No”.",
-        "On desktop, when hovering near/over “No”, the button moves to a new position within the visible bounds of the step.",
-        "On mobile/touch, attempting to tap “No” causes it to move away before a successful click/tap registers.",
-        "The “Yes” button remains easily clickable/tappable."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/valentine/steps/ProposalStep.tsx",
-          "operation": "create",
-          "description": "Create the first step UI with exactly two buttons (“Yes”, “No”) and implement evasive behavior for “No” on pointer/mouse and touch (reposition within visible bounds of the step). Use shadcn-ui Button for actions; verify the component's usage instructions before implementing."
+          "description": "Update the HTML entry to be production-safe for deployment hosting: remove any dev-only assumptions and ensure the production build pipeline (from the build-template-react / initial-app templates) will emit a built HTML referencing bundled assets rather than requiring /src/* at runtime. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/valentine/ValentineFlow.tsx",
-          "operation": "modify",
-          "description": "Wire ProposalStep into the flow as the first full-screen step and connect the “Yes” action to mark acceptance and advance to the next step."
+          "path": "frontend/vite.config.ts",
+          "operation": "create",
+          "description": "Add/standardize Vite production build configuration suitable for icp0.io root hosting (asset base/path handling, output directory defaults), aligned with build-template-react expectations so the deployed artifact is a production build. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/valentine/hooks/useEvasiveButton.ts",
+          "path": "frontend/package.json",
           "operation": "create",
-          "description": "Add a small hook/utility to manage evasive-button positioning logic (bounds checking, random repositioning, pointer/touch proximity handling) used by the ProposalStep."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "After clicking “Yes”, show couple image and the message “Good choice”, with a control to proceed.",
-      "acceptanceCriteria": [
-        "Clicking “Yes” transitions away from the proposal step.",
-        "The next step shows the specified couple image and the exact text “Good choice”.",
-        "A control is present to proceed to the next step."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/valentine/steps/GoodChoiceStep.tsx",
-          "operation": "create",
-          "description": "Create the post-acceptance step that displays the required couple image and the exact text “Good choice”, plus a Next control. Use shadcn-ui Card/Button for layout and actions; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/valentine/ValentineFlow.tsx",
-          "operation": "modify",
-          "description": "Insert GoodChoiceStep immediately after the ProposalStep and ensure transition occurs only when “Yes” is clicked."
+          "description": "Add/standardize frontend build scripts (dev/build/preview) so the deployment process produces and publishes the compiled production artifact rather than raw source. Align with build-template-react conventions. Verify the component's usage instructions before implementing."
         },
         {
           "path": "frontend/src/components/valentine/assets.ts",
-          "operation": "create",
-          "description": "Centralize static asset references (including frontend/public/assets/generated/couple-hero.dim_1400x900.png) for use by steps so assets are referenced consistently."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Shayari step showing the provided Hindi shayari exactly with beautiful formatting.",
-      "acceptanceCriteria": [
-        "The shayari step displays the poem text exactly, preserving line breaks and punctuation.",
-        "Typography and spacing make the poem clearly readable on mobile.",
-        "A control is present to proceed to the next step."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/valentine/steps/ShayariStep.tsx",
-          "operation": "create",
-          "description": "Create a step that renders the provided shayari text exactly (preserve line breaks/punctuation) with mobile-readable typography and a Next control. Use shadcn-ui Card/Button for styling consistency; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/valentine/content.ts",
-          "operation": "create",
-          "description": "Add the shayari string exactly as provided (including line breaks) and export it for ShayariStep usage."
-        },
-        {
-          "path": "frontend/src/components/valentine/ValentineFlow.tsx",
           "operation": "modify",
-          "description": "Wire ShayariStep into the sequence after the “Good choice” step."
-        }
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "summary": "Music step listing 5 songs with custom play/pause controls using bundled local audio; only one plays at a time; handle missing files gracefully.",
-      "acceptanceCriteria": [
-        "The step shows the five song titles as an interactive list.",
-        "Each song has play/pause control; starting one song stops any currently playing song.",
-        "Audio playback works in Android Chrome using local static audio assets bundled with the frontend build (no external streaming requirement).",
-        "If any audio file is missing, the UI clearly indicates it is unavailable without breaking the page."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/valentine/steps/MusicStep.tsx",
-          "operation": "create",
-          "description": "Create the music step with a clean custom UI list for the five songs and play/pause controls, enforcing single-track playback. Use shadcn-ui Button/Card for consistent controls/containers; verify the component's usage instructions before implementing."
+          "description": "Verify and, if needed, adjust static asset paths so they resolve correctly in production (icp0.io root) and match the deployed asset locations under frontend/public/assets (e.g., /assets/generated/*). Verify the component's usage instructions before implementing."
         },
-        {
-          "path": "frontend/src/components/valentine/hooks/useSingleAudioPlayer.ts",
-          "operation": "create",
-          "description": "Implement a hook to manage a single HTMLAudioElement instance, ensuring starting a track stops the previous one, and exposing status/errors for missing/failed audio loads."
-        },
-        {
-          "path": "frontend/public/assets/audio/ishq-hai.mp3",
-          "operation": "create",
-          "description": "Add bundled static audio asset for “Ishq Hai” (file can be a placeholder until replaced with real audio)."
-        },
-        {
-          "path": "frontend/public/assets/audio/zulfein.mp3",
-          "operation": "create",
-          "description": "Add bundled static audio asset for “zulfein” (file can be a placeholder until replaced with real audio)."
-        },
-        {
-          "path": "frontend/public/assets/audio/haseen.mp3",
-          "operation": "create",
-          "description": "Add bundled static audio asset for “Haseen” (file can be a placeholder until replaced with real audio)."
-        },
-        {
-          "path": "frontend/public/assets/audio/ranjheya-ve.mp3",
-          "operation": "create",
-          "description": "Add bundled static audio asset for “Ranjheya Ve” (file can be a placeholder until replaced with real audio)."
-        },
-        {
-          "path": "frontend/public/assets/audio/high-on-you.mp3",
-          "operation": "create",
-          "description": "Add bundled static audio asset for “High on you” (file can be a placeholder until replaced with real audio)."
-        },
-        {
-          "path": "frontend/src/components/valentine/content.ts",
-          "operation": "modify",
-          "description": "Add the five song titles and map them to local static audio asset paths under frontend/public/assets/audio/ for MusicStep rendering."
-        },
-        {
-          "path": "frontend/src/components/valentine/ValentineFlow.tsx",
-          "operation": "modify",
-          "description": "Wire MusicStep into the sequence after the shayari step."
-        }
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "summary": "Quotes step titled “Things My heart feels for you” displaying 8 provided quotes in a romantic layout.",
-      "acceptanceCriteria": [
-        "The step title is exactly “Things My heart feels for you”.",
-        "All eight quotes appear exactly as provided, each clearly separated/styled.",
-        "A control is present to proceed to the next step."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/valentine/steps/QuotesStep.tsx",
-          "operation": "create",
-          "description": "Create the quotes step with the exact title “Things My heart feels for you” and render all provided quotes with clear separation and a Next control. Use shadcn-ui Card/Button (and optional Separator if available) for cohesive UI; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/valentine/content.ts",
-          "operation": "modify",
-          "description": "Add the eight quotes exactly as provided and export them for the QuotesStep."
-        },
-        {
-          "path": "frontend/src/components/valentine/ValentineFlow.tsx",
-          "operation": "modify",
-          "description": "Wire QuotesStep into the sequence after the music step."
-        }
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "summary": "Date ideas step titled “Our virtual Date ideas” displaying 13 ideas in order; scrollable on mobile if needed.",
-      "acceptanceCriteria": [
-        "The step title is exactly “Our virtual Date ideas”.",
-        "All 13 items are displayed in order and readable on mobile.",
-        "The page does not crash or overflow badly; content is scrollable if needed."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/valentine/steps/DateIdeasStep.tsx",
-          "operation": "create",
-          "description": "Create the date-ideas step with the exact title “Our virtual Date ideas” and render 13 items in order with mobile-friendly spacing and scroll support within the full-screen step. Use shadcn-ui Card/Button for layout/actions; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/valentine/content.ts",
-          "operation": "modify",
-          "description": "Add the 13 date ideas exactly as provided (in order) and export them for the DateIdeasStep."
-        },
-        {
-          "path": "frontend/src/components/valentine/ValentineFlow.tsx",
-          "operation": "modify",
-          "description": "Wire DateIdeasStep into the sequence after the quotes step."
-        }
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "summary": "Consistent romantic pink/white theme across all steps with cohesive typography, spacing, and subtle decorative elements.",
-      "acceptanceCriteria": [
-        "Primary palette is pink and white; theme is consistent across all steps.",
-        "Buttons, headings, and cards/containers share a coherent design system.",
-        "Animations/transitions feel smooth and romantic without reducing readability or usability."
-      ],
-      "file_operations": [
         {
           "path": "frontend/src/index.css",
-          "operation": "create",
-          "description": "Define global romantic theme styling (pink/white palette via CSS variables), base typography, and background treatment; apply subtle decorative styling that supports readability and touch usability."
+          "operation": "modify",
+          "description": "Verify CSS references to static assets (e.g., hearts pattern background) resolve in production and match the deployed asset locations; avoid runtime 404s. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/valentine/ValentineFlow.tsx",
-          "operation": "modify",
-          "description": "Apply shared layout primitives (spacing, step container styling, transitions) and reference the subtle heart-pattern background image where appropriate. Use shadcn-ui components for consistent visual language; verify the component's usage instructions before implementing."
+          "path": "frontend/public/assets/generated/couple-hero.dim_1400x900.png",
+          "operation": "create",
+          "description": "Place the generated image asset at this exact path so production can load /assets/generated/couple-hero.dim_1400x900.png without 404s."
         },
         {
           "path": "frontend/public/assets/generated/hearts-pattern.dim_1024x1024.png",
           "operation": "create",
-          "description": "Add the generated seamless subtle heart pattern background asset at the exact path required: frontend/public/assets/generated/hearts-pattern.dim_1024x1024.png."
+          "description": "Place the generated image asset at this exact path so production can load /assets/generated/hearts-pattern.dim_1024x1024.png without 404s."
+        },
+        {
+          "path": "frontend/public/assets/audio/haseen.mp3",
+          "operation": "create",
+          "description": "Place audio assets under frontend/public/assets/audio so any existing audioPath references can load reliably in production (repeat for remaining tracks used by the app)."
+        },
+        {
+          "path": "frontend/public/assets/audio/high-on-you.mp3",
+          "operation": "create",
+          "description": "Place audio asset for production bundling/serving under frontend/public/assets/audio."
+        },
+        {
+          "path": "frontend/public/assets/audio/ishq-hai.mp3",
+          "operation": "create",
+          "description": "Place audio asset for production bundling/serving under frontend/public/assets/audio."
+        },
+        {
+          "path": "frontend/public/assets/audio/ranjheya-ve.mp3",
+          "operation": "create",
+          "description": "Place audio asset for production bundling/serving under frontend/public/assets/audio."
+        },
+        {
+          "path": "frontend/public/assets/audio/zulfein.mp3",
+          "operation": "create",
+          "description": "Place audio asset for production bundling/serving under frontend/public/assets/audio."
         }
       ]
     },
     {
-      "id": "REQ-9",
-      "summary": "In-flow navigation (Next/Back where appropriate) that blocks skipping ahead before acceptance; sequential navigation after “Yes”.",
+      "id": "REQ-12",
+      "summary": "Remove runtime dependency on Google Fonts so the app remains styled/readable when external font CDNs are blocked.",
       "acceptanceCriteria": [
-        "Before “Yes” is clicked, later steps are not accessible via UI controls.",
-        "After “Yes”, the user can proceed through the steps in order.",
-        "Optional Back is allowed after “Yes” as long as it doesn’t break the experience or allow reaching later steps without acceptance."
+        "The deployed app loads and remains readable/styled even when the browser blocks requests to https://fonts.googleapis.com and https://fonts.gstatic.com.",
+        "No external font stylesheet links remain in the production HTML output."
       ],
       "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Remove external Google Fonts <link> tags (preconnect and stylesheet) so production HTML has no dependency on fonts.googleapis.com / fonts.gstatic.com."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global typography to use a fully local/system font stack (or locally bundled fonts if added) to replace Inter/Playfair Display; ensure body and heading font-family declarations no longer require external CDNs."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Update Tailwind fontFamily configuration to match the new local/system font stack so existing Tailwind typography stays consistent without external font downloads."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Prepare the frontend project for republishing and provide guidance to produce and verify a new working icp0.io share URL after fixes.",
+      "acceptanceCriteria": [
+        "A new production deployment is created.",
+        "A new working share URL (icp0.io) is produced and verified to load the app."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/DEPLOYMENT.md",
+          "operation": "create",
+          "description": "Document the exact build-and-publish steps to ensure a production build artifact is deployed (not raw source), including a verification checklist for: (1) no /src/* requests in production, (2) no missing JS/CSS/assets, (3) generated new icp0.io share URL and confirm it loads the proposal step."
+        },
+        {
+          "path": "frontend/package.json",
+          "operation": "modify",
+          "description": "Add/adjust scripts needed by the chosen deployment flow (aligned with github-export-icp-cli expectations where applicable) so republishing runs a production build before upload. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Add an in-app Share UI that shows the current URL and supports one-tap copy with a clear success state.",
+      "acceptanceCriteria": [
+        "The app displays the current URL (derived from window.location) in a share UI.",
+        "Tapping “Copy link” copies the URL to the clipboard and provides a clear success state (English text).",
+        "The share UI does not require any external network services (e.g., no third-party QR endpoints)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/valentine/ShareSection.tsx",
+          "operation": "create",
+          "description": "Create a Share section component that reads window.location.href, displays it, and provides a “Copy link” action using the Clipboard API (with a safe fallback) plus an English success state. Use existing shadcn-ui components where appropriate (compose only; do not modify frontend/src/components/ui). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/valentine/hooks/useCopyToClipboard.ts",
+          "operation": "create",
+          "description": "Add a small hook to encapsulate clipboard copying, fallback behavior, and transient success/error state for the Share UI."
+        },
         {
           "path": "frontend/src/components/valentine/ValentineFlow.tsx",
           "operation": "modify",
-          "description": "Implement navigation rules: before acceptance, only show the Proposal step (no Next/Back); after “Yes”, allow sequential Next and optional Back while preventing jumping/skipping to future steps. Use shadcn-ui Button for navigation controls; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/valentine/steps/GoodChoiceStep.tsx",
-          "operation": "modify",
-          "description": "Ensure the step exposes only the intended proceed control(s) and that navigation is driven by the flow’s acceptance-aware model."
-        },
-        {
-          "path": "frontend/src/components/valentine/steps/ShayariStep.tsx",
-          "operation": "modify",
-          "description": "Align step navigation controls with the acceptance-aware flow navigation model (Next and optional Back behavior controlled by ValentineFlow)."
-        }
-      ]
-    },
-    {
-      "id": "REQ-10",
-      "summary": "Bundle and reference static image/audio assets locally so the experience works without external network dependencies once loaded.",
-      "acceptanceCriteria": [
-        "Couple image and decorative assets are served as static frontend assets (not via backend calls).",
-        "Song audio files are loaded from static frontend assets.",
-        "App works end-to-end in a production build with assets included."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/public/assets/generated/couple-hero.dim_1400x900.png",
-          "operation": "create",
-          "description": "Add the generated romantic couple illustration asset at the exact path required: frontend/public/assets/generated/couple-hero.dim_1400x900.png."
-        },
-        {
-          "path": "frontend/src/components/valentine/assets.ts",
-          "operation": "modify",
-          "description": "Ensure all images/audio are referenced as local static assets (including frontend/public/assets/generated/couple-hero.dim_1400x900.png and frontend/public/assets/generated/hearts-pattern.dim_1024x1024.png, plus frontend/public/assets/audio/*.mp3) so no external network calls are required."
-        },
-        {
-          "path": "frontend/src/components/valentine/steps/MusicStep.tsx",
-          "operation": "modify",
-          "description": "Add resilient asset-loading behavior: if an audio file fails to load, show an ‘unavailable’ state per track without breaking the page. Use shadcn-ui components for consistent status presentation; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/valentine/steps/GoodChoiceStep.tsx",
-          "operation": "modify",
-          "description": "Reference the couple illustration via the centralized assets module so the image is always served from bundled static assets. Use shadcn-ui components for consistent layout; verify the component's usage instructions before implementing."
+          "description": "Wire the new ShareSection into the existing Valentine flow layout (no new routes/pages) so it is accessible while users view the flow, without disrupting the first proposal step."
         }
       ]
     }
