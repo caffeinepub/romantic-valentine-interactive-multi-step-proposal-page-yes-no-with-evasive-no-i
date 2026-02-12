@@ -1,0 +1,205 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-single-page-mobile-friendly-interactive-valentine-flow-with-multiple-full-screen-steps-sections-and-smooth-transitions-designed-to-run-well-on-android-chrome",
+      "featureTitle": "Create a single-page, mobile-friendly interactive Valentine flow with multiple full-screen steps (sections) and smooth transitions, designed to run well on Android Chrome.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/App.tsx",
+        "frontend/src/components/valentine/ValentineFlow.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-opening-proposal-step-that-asks-the-user-to-be-your-valentine-with-exactly-two-options-yes-and-no-make-the-no-option-evade-interaction-by-moving-away-when-the-pointer-touch-approaches-it-making-it-effectively-unclickable",
+      "featureTitle": "Implement the opening proposal step that asks the user to be your Valentine with exactly two options: “Yes” and “No”. Make the “No” option evade interaction by moving away when the pointer/touch approaches it, making it effectively unclickable.",
+      "files": [
+        "frontend/src/components/valentine/ValentineFlow.tsx",
+        "frontend/src/components/valentine/hooks/useEvasiveButton.ts",
+        "frontend/src/components/valentine/steps/ProposalStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-on-clicking-yes-transition-to-a-step-that-displays-a-beautiful-couple-image-and-the-message-text-good-choice",
+      "featureTitle": "On clicking “Yes”, transition to a step that displays a beautiful couple image and the message text: “Good choice”.",
+      "files": [
+        "frontend/src/components/valentine/ValentineFlow.tsx",
+        "frontend/src/components/valentine/assets.ts",
+        "frontend/src/components/valentine/steps/GoodChoiceStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-the-next-step-that-displays-the-provided-romantic-hindi-shayari-exactly-as-given-formatted-in-a-visually-beautiful-layout",
+      "featureTitle": "Add the next step that displays the provided romantic Hindi shayari exactly as given, formatted in a visually beautiful layout.",
+      "files": [
+        "frontend/src/components/valentine/ValentineFlow.tsx",
+        "frontend/src/components/valentine/content.ts",
+        "frontend/src/components/valentine/steps/ShayariStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-music-step-that-lists-the-following-songs-and-allows-the-user-to-play-pause-each-soundtrack-on-the-page-1-ishq-hai-2-zulfein-3-haseen-4-ranjheya-ve-5-high-on-you-implement-playback-using-in-browser-audio-controls-with-a-clean-custom-ui",
+      "featureTitle": "Add a music step that lists the following songs and allows the user to play/pause each soundtrack on the page: 1) Ishq Hai 2) zulfein 3) Haseen 4) Ranjheya Ve 5) High on you. Implement playback using in-browser audio controls with a clean custom UI.",
+      "files": [
+        "frontend/src/components/valentine/ValentineFlow.tsx",
+        "frontend/src/components/valentine/content.ts",
+        "frontend/src/components/valentine/hooks/useSingleAudioPlayer.ts",
+        "frontend/src/components/valentine/steps/MusicStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-step-titled-things-my-heart-feels-for-you-and-display-the-provided-quotes-in-a-beautiful-romantic-layout",
+      "featureTitle": "Add a step titled “Things My heart feels for you” and display the provided quotes in a beautiful, romantic layout.",
+      "files": [
+        "frontend/src/components/valentine/ValentineFlow.tsx",
+        "frontend/src/components/valentine/content.ts",
+        "frontend/src/components/valentine/steps/QuotesStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-step-titled-our-virtual-date-ideas-and-display-the-provided-13-date-ideas-in-a-beautiful-romantic-layout",
+      "featureTitle": "Add a step titled “Our virtual Date ideas” and display the provided 13 date ideas in a beautiful, romantic layout.",
+      "files": [
+        "frontend/src/components/valentine/ValentineFlow.tsx",
+        "frontend/src/components/valentine/content.ts",
+        "frontend/src/components/valentine/steps/DateIdeasStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-consistent-romantic-visual-theme-across-all-steps-using-a-pink-and-white-color-scheme-with-cohesive-typography-spacing-and-decorative-elements-e-g-subtle-hearts-soft-gradients-while-keeping-the-ui-simple-and-focused-on-the-valentine-flow",
+      "featureTitle": "Apply a consistent romantic visual theme across all steps using a pink and white color scheme, with cohesive typography, spacing, and decorative elements (e.g., subtle hearts, soft gradients), while keeping the UI simple and focused on the Valentine flow.",
+      "files": [
+        "frontend/src/components/valentine/ValentineFlow.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-simple-in-flow-navigation-model-e-g-next-back-where-appropriate-that-prevents-skipping-directly-to-later-steps-before-accepting-clicking-yes-while-still-allowing-normal-sequential-navigation-after-yes",
+      "featureTitle": "Add a simple in-flow navigation model (e.g., Next/Back where appropriate) that prevents skipping directly to later steps before accepting (clicking “Yes”), while still allowing normal sequential navigation after “Yes”.",
+      "files": [
+        "frontend/src/components/valentine/ValentineFlow.tsx",
+        "frontend/src/components/valentine/steps/GoodChoiceStep.tsx",
+        "frontend/src/components/valentine/steps/ShayariStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-bundle-required-static-assets-in-the-frontend-images-and-audio-and-reference-them-directly-from-the-frontend-so-the-experience-works-without-any-external-network-dependency-once-loaded",
+      "featureTitle": "Bundle required static assets in the frontend (images and audio) and reference them directly from the frontend so the experience works without any external network dependency once loaded.",
+      "files": [
+        "frontend/src/components/valentine/assets.ts",
+        "frontend/src/components/valentine/steps/GoodChoiceStep.tsx",
+        "frontend/src/components/valentine/steps/MusicStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

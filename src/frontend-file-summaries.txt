@@ -1,0 +1,22 @@
+{
+  "frontend/src/App.tsx": "Main application entry point that renders the ValentineFlow component as the root of the romantic proposal experience.",
+  "frontend/src/components/valentine/ValentineFlow.tsx": "Core flow controller managing the multi-step Valentine proposal journey with state management for current step, acceptance status, and navigation between proposal, good choice, shayari, music, quotes, and date ideas steps.",
+  "frontend/src/components/valentine/steps/ProposalStep.tsx": "Initial proposal screen with \"Yes\" and evasive \"No\" buttons, featuring romantic styling with hearts and gradient backgrounds where the No button moves away on hover/touch.",
+  "frontend/src/components/valentine/steps/GoodChoiceStep.tsx": "Post-acceptance step displaying the couple hero image with \"Good choice\" message and continue button to proceed to the next romantic content.",
+  "frontend/src/components/valentine/steps/ShayariStep.tsx": "Displays the provided Hindi romantic shayari in a beautifully formatted card with serif typography, gradient background, and navigation controls.",
+  "frontend/src/components/valentine/steps/MusicStep.tsx": "Interactive music player step showing the 5 romantic songs with custom play/pause controls, visual playback indicators, and graceful error handling for missing audio files with proper boolean type conversion for the disabled prop.",
+  "frontend/src/components/valentine/steps/QuotesStep.tsx": "Scrollable step displaying all 8 heartfelt quotes in individual cards with sparkle decorations and romantic gradient backgrounds under the title \"Things My heart feels for you\".",
+  "frontend/src/components/valentine/steps/DateIdeasStep.tsx": "Final step listing all 13 virtual date ideas with contextual icons, romantic styling, closing message, and footer with caffeine.ai attribution.",
+  "frontend/src/components/valentine/hooks/useEvasiveButton.ts": "Custom hook managing the evasive \"No\" button behavior with position tracking, boundary checking, and pointer/touch proximity detection to move the button away from user interaction.",
+  "frontend/src/components/valentine/hooks/useSingleAudioPlayer.ts": "Audio playback hook ensuring only one song plays at a time, managing play/pause state, error handling for missing files, and cleanup on unmount.",
+  "frontend/src/components/valentine/content.ts": "Centralized content store exporting the shayari text, songs array with titles and audio paths, quotes array, and date ideas array for use across all step components.",
+  "frontend/src/components/valentine/assets.ts": "Asset path constants for the couple hero image and hearts pattern background, centralizing static asset references.",
+  "frontend/src/index.css": "Global styles with romantic pink/white OKLCH color system, custom font families (Inter and Playfair Display), hearts pattern background utility, and fade-in animation for smooth step transitions.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with romantic color palette, custom font families, enhanced border radius scale, romantic shadow, and animation utilities.",
+  "frontend/index.html": "HTML entry point with mobile-optimized viewport settings, romantic theme color, Google Fonts preconnect for Inter and Playfair Display, and Valentine-themed title.",
+  "frontend/public/assets/audio/ishq-hai.mp3": "Placeholder audio file for \"Ishq Hai\" song (to be replaced with actual audio).",
+  "frontend/public/assets/audio/zulfein.mp3": "Placeholder audio file for \"Zulfein\" song (to be replaced with actual audio).",
+  "frontend/public/assets/audio/haseen.mp3": "Placeholder audio file for \"Haseen\" song (to be replaced with actual audio).",
+  "frontend/public/assets/audio/ranjheya-ve.mp3": "Placeholder audio file for \"Ranjheya Ve\" song (to be replaced with actual audio).",
+  "frontend/public/assets/audio/high-on-you.mp3": "Placeholder audio file for \"High on you\" song (to be replaced with actual audio)."
+}

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build a romantic, interactive Valentine proposal web page (HTML/CSS/JS) with a pink/white theme, a playful Yes/No prompt where No evades the cursor, and a multi-page/step flow showing an image, Hindi shayari, a playable song list, heartfelt quotes, and virtual date ideas—designed to run easily on Android Chrome.",
+  "architectural_notes": [
+    "Implement as a mobile-friendly HTML/CSS/JS experience optimized for running locally in Android Chrome.",
+    "Use a multi-step/page flow (single-page app with section transitions or separate pages) to progress through: proposal -> image -> shayari -> songs -> quotes -> date ideas."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Romantic couple illustration in a warm, meaningful style (couple-hero.dim_1400x900.png)\n- Seamless subtle heart pattern background in pink/white tones (hearts-pattern.dim_1024x1024.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-mobile-friendly-interactive-valentine-flow-with-multiple-full-screen-steps-sections-and-smooth-transitions-designed-to-run-well-on-android-chrome",
+      "title": "Create a single-page, mobile-friendly interactive Valentine flow with multiple full-screen steps (sections) and smooth transitions, designed to run well on Android Chrome.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-opening-proposal-step-that-asks-the-user-to-be-your-valentine-with-exactly-two-options-yes-and-no-make-the-no-option-evade-interaction-by-moving-away-when-the-pointer-touch-approaches-it-making-it-effectively-unclickable",
+      "title": "Implement the opening proposal step that asks the user to be your Valentine with exactly two options: “Yes” and “No”. Make the “No” option evade interaction by moving away when the pointer/touch approaches it, making it effectively unclickable.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-on-clicking-yes-transition-to-a-step-that-displays-a-beautiful-couple-image-and-the-message-text-good-choice",
+      "title": "On clicking “Yes”, transition to a step that displays a beautiful couple image and the message text: “Good choice”.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-next-step-that-displays-the-provided-romantic-hindi-shayari-exactly-as-given-formatted-in-a-visually-beautiful-layout",
+      "title": "Add the next step that displays the provided romantic Hindi shayari exactly as given, formatted in a visually beautiful layout.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-music-step-that-lists-the-following-songs-and-allows-the-user-to-play-pause-each-soundtrack-on-the-page-1-ishq-hai-2-zulfein-3-haseen-4-ranjheya-ve-5-high-on-you-implement-playback-using-in-browser-audio-controls-with-a-clean-custom-ui",
+      "title": "Add a music step that lists the following songs and allows the user to play/pause each soundtrack on the page: 1) Ishq Hai 2) zulfein 3) Haseen 4) Ranjheya Ve 5) High on you. Implement playback using in-browser audio controls with a clean custom UI.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-step-titled-things-my-heart-feels-for-you-and-display-the-provided-quotes-in-a-beautiful-romantic-layout",
+      "title": "Add a step titled “Things My heart feels for you” and display the provided quotes in a beautiful, romantic layout.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-step-titled-our-virtual-date-ideas-and-display-the-provided-13-date-ideas-in-a-beautiful-romantic-layout",
+      "title": "Add a step titled “Our virtual Date ideas” and display the provided 13 date ideas in a beautiful, romantic layout.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-consistent-romantic-visual-theme-across-all-steps-using-a-pink-and-white-color-scheme-with-cohesive-typography-spacing-and-decorative-elements-e-g-subtle-hearts-soft-gradients-while-keeping-the-ui-simple-and-focused-on-the-valentine-flow",
+      "title": "Apply a consistent romantic visual theme across all steps using a pink and white color scheme, with cohesive typography, spacing, and decorative elements (e.g., subtle hearts, soft gradients), while keeping the UI simple and focused on the Valentine flow.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-simple-in-flow-navigation-model-e-g-next-back-where-appropriate-that-prevents-skipping-directly-to-later-steps-before-accepting-clicking-yes-while-still-allowing-normal-sequential-navigation-after-yes",
+      "title": "Add a simple in-flow navigation model (e.g., Next/Back where appropriate) that prevents skipping directly to later steps before accepting (clicking “Yes”), while still allowing normal sequential navigation after “Yes”.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-bundle-required-static-assets-in-the-frontend-images-and-audio-and-reference-them-directly-from-the-frontend-so-the-experience-works-without-any-external-network-dependency-once-loaded",
+      "title": "Bundle required static assets in the frontend (images and audio) and reference them directly from the frontend so the experience works without any external network dependency once loaded.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Valentine proposal landing screen with Yes/No buttons; No button moves away on hover to prevent clicking",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "On Yes: show a beautiful meaningful couple image with the message \"Good choice\"",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Next step/page: display provided Hindi romantic shayari in a beautiful layout",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Next step/page: show a list of 5 songs and allow playback of the soundtracks on the page",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Next step/page: \"Things My heart feels for you\" section displaying the provided quotes with romantic styling",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Next step/page: \"Our virtual Date ideas\" section listing the provided date ideas with romantic styling",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Romantic pink and white theme with fully interactive UI built using HTML, CSS, and JavaScript and compatible with Android Chrome",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Romantic Valentine interactive multi-step proposal page (Yes/No with evasive No, image, shayari, songs, quotes, date ideas)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

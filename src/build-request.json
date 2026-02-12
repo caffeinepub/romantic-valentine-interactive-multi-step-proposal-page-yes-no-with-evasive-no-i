@@ -1,0 +1,221 @@
+{
+  "kind": "build_request",
+  "title": "Romantic Valentine interactive multi-step proposal page (Yes/No with evasive No, image, shayari, songs, quotes, date ideas)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a single-page, mobile-friendly interactive Valentine flow with multiple full-screen steps (sections) and smooth transitions, designed to run well on Android Chrome.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create an interactive web page as a surprise for my girlfriend... run it on my android phone using Chrome."
+        ]
+      },
+      "acceptanceCriteria": [
+        "App loads as a single-page experience (no backend dependency required for core UX).",
+        "Layout is responsive for common Android viewport sizes and supports touch interactions.",
+        "User can progress forward through the steps via clear on-screen controls (e.g., Next buttons) once the proposal is accepted."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement the opening proposal step that asks the user to be your Valentine with exactly two options: “Yes” and “No”. Make the “No” option evade interaction by moving away when the pointer/touch approaches it, making it effectively unclickable.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "There should be two options Yes or No. When she hovers her cursor over No, it should move away so she cannot click it, forcing her to click only on Yes."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The first step displays the Valentine question with two visible buttons labeled “Yes” and “No”.",
+        "On desktop, when hovering near/over “No”, the button moves to a new position within the visible bounds of the step.",
+        "On mobile/touch, attempting to tap “No” causes it to move away before a successful click/tap registers.",
+        "The “Yes” button remains easily clickable/tappable."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "On clicking “Yes”, transition to a step that displays a beautiful couple image and the message text: “Good choice”.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "When she clicks Yes, show her a beautiful meaningful couple image telling her \"Good choice"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking “Yes” transitions away from the proposal step.",
+        "The next step shows the specified couple image and the exact text “Good choice”.",
+        "A control is present to proceed to the next step."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add the next step that displays the provided romantic Hindi shayari exactly as given, formatted in a visually beautiful layout.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "After it's next page add  beautiful hindi romantic sayari for her impress Like अपनी सांसों में महकता पाया है तुझे,\nहर खवाब मे बुलाया है तुझे,(2)\nक्यू न करे याद तुझ को,\nजब खुदा ने हमारे लिए बनाया है तुझे........!!!"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The shayari step displays the poem text exactly, preserving line breaks and punctuation.",
+        "Typography and spacing make the poem clearly readable on mobile.",
+        "A control is present to proceed to the next step."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add a music step that lists the following songs and allows the user to play/pause each soundtrack on the page: 1) Ishq Hai 2) zulfein 3) Haseen 4) Ranjheya Ve 5) High on you. Implement playback using in-browser audio controls with a clean custom UI.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Next page generates songs like\n1.Ishq Hai  \n2. zulfein \n3. Haseen \n4 .Ranjheya Ve\n5.High on you\nThen she can able to play those soundtrack on that page"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The step shows the five song titles as an interactive list.",
+        "Each song has play/pause control; starting one song stops any currently playing song.",
+        "Audio playback works in Android Chrome using local static audio assets bundled with the frontend build (no external streaming requirement).",
+        "If any audio file is missing, the UI clearly indicates it is unavailable without breaking the page."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add a step titled “Things My heart feels for you” and display the provided quotes in a beautiful, romantic layout.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "After this page on next page show title with\nThings My heart feels for you\nAnd add below quote into same page with beautiful manner"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The step title is exactly “Things My heart feels for you”.",
+        "All eight quotes appear exactly as provided, each clearly separated/styled.",
+        "A control is present to proceed to the next step."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add a step titled “Our virtual Date ideas” and display the provided 13 date ideas in a beautiful, romantic layout.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "After next page with title of\nOur virtual Date ideas\nAnd add below content line on same page with beautiful manner"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The step title is exactly “Our virtual Date ideas”.",
+        "All 13 items are displayed in order and readable on mobile.",
+        "The page does not crash or overflow badly; content is scrollable if needed."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Apply a consistent romantic visual theme across all steps using a pink and white color scheme, with cohesive typography, spacing, and decorative elements (e.g., subtle hearts, soft gradients), while keeping the UI simple and focused on the Valentine flow.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "The page should be themed romantically with a pink and white color scheme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Primary palette is pink and white; theme is consistent across all steps.",
+        "Buttons, headings, and cards/containers share a coherent design system.",
+        "Animations/transitions feel smooth and romantic without reducing readability or usability."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add a simple in-flow navigation model (e.g., Next/Back where appropriate) that prevents skipping directly to later steps before accepting (clicking “Yes”), while still allowing normal sequential navigation after “Yes”.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "The page should be simple... have only one purpose to ask her to be my Valentine."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Before “Yes” is clicked, later steps are not accessible via UI controls.",
+        "After “Yes”, the user can proceed through the steps in order.",
+        "Optional Back is allowed after “Yes” as long as it doesn’t break the experience or allow reaching later steps without acceptance."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Bundle required static assets in the frontend (images and audio) and reference them directly from the frontend so the experience works without any external network dependency once loaded.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "fully interactive using HTML, CSS, and JavaScript so that I can easily run it on my android phone using Chrome."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Couple image and decorative assets are served as static frontend assets (not via backend calls).",
+        "Song audio files are loaded from static frontend assets.",
+        "App works end-to-end in a production build with assets included."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Backend must remain a single Motoko actor if any backend code is added; however, this feature set should not require backend logic.",
+    "Do not rely on external third-party auth providers; Internet Identity is the only supported auth (not needed for this app)."
+  ],
+  "nonGoals": [
+    "User accounts, logins, or storing personal data.",
+    "Real-time features (websockets/chat/push).",
+    "External music streaming integrations (e.g., Spotify/YouTube).",
+    "Payments or monetization."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Romantic couple illustration in a warm, meaningful style (couple-hero.dim_1400x900.png)",
+      "Seamless subtle heart pattern background in pink/white tones (hearts-pattern.dim_1024x1024.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [
+      "Build a romantic interactive Valentine proposal webpage with a playful Yes/No interaction and a multi-step reveal flow."
+    ],
+    "goalsToRemove": [],
+    "preferencesToAdd": [
+      "Prefers a pink and white romantic theme and mobile-friendly interaction for Android Chrome."
+    ],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

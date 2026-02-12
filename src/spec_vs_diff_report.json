@@ -1,0 +1,82 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-12T19:47:03.854Z",
+  "summary": "The diff adds a multi-step Valentine flow with proposal/acceptance gating, shayari, music playback, quotes, and date ideas, plus styling and asset references. However, some required exact texts/button labels do not match the BuildRequest, and several unrequested additions (backend actor, auth/query wiring, external links/fonts) appear. There is also evidence of edits/additions to paths that were constrained as immutable.",
+  "missing_requirements": [
+    {
+      "id": "REQ-2",
+      "requirement": "Opening proposal step must have exactly two options labeled “Yes” and “No”.",
+      "reason": "The “Yes” button label is not exactly “Yes”; it is rendered as “Yes! 💕”, which violates the “exactly two options”/exact labeling requirement.",
+      "evidence": [
+        "frontend/src/components/valentine/steps/ProposalStep.tsx"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "On clicking “Yes”, transition to a step that displays the couple image and the exact text “Good choice”.",
+      "reason": "The GoodChoice step displays “Good choice! 💖” rather than the exact required text “Good choice”.",
+      "evidence": [
+        "frontend/src/components/valentine/steps/GoodChoiceStep.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Added a backend Motoko actor even though the BuildRequest says backend logic should not be required for this feature set.",
+      "reason": "A new backend actor file is introduced with no corresponding requirement.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Introduced/changed Internet Identity + React Query wiring and actor hook code despite auth not being needed for this app, and despite immutable-path constraints.",
+      "reason": "BuildRequest explicitly notes Internet Identity is not needed and forbids editing certain frontend hook/main paths; diff shows these files present as added in the summary.",
+      "evidence": [
+        "frontend/src/main.tsx",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/hooks/useInternetIdentity.ts"
+      ]
+    },
+    {
+      "description": "External attribution link to caffeine.ai included in the UI.",
+      "reason": "Not requested; also adds an external network link unrelated to the Valentine flow requirements.",
+      "evidence": [
+        "frontend/src/components/valentine/steps/DateIdeasStep.tsx"
+      ]
+    },
+    {
+      "description": "Uses external Google Fonts loading (preconnect/fonts) which undermines the ‘no external network dependency once loaded’ spirit for assets/experience.",
+      "reason": "BuildRequest requires bundling required static assets (images/audio) and avoiding external dependencies for the experience; diff summary indicates external font loading in HTML.",
+      "evidence": [
+        "frontend/index.html"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/valentine/ValentineFlow.tsx",
+    "frontend/src/components/valentine/assets.ts",
+    "frontend/src/components/valentine/content.ts",
+    "frontend/src/components/valentine/hooks/useEvasiveButton.ts",
+    "frontend/src/components/valentine/hooks/useSingleAudioPlayer.ts",
+    "frontend/src/components/valentine/steps/DateIdeasStep.tsx",
+    "frontend/src/components/valentine/steps/GoodChoiceStep.tsx",
+    "frontend/src/components/valentine/steps/MusicStep.tsx",
+    "frontend/src/components/valentine/steps/ProposalStep.tsx",
+    "frontend/src/components/valentine/steps/QuotesStep.tsx",
+    "frontend/src/components/valentine/steps/ShayariStep.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}
